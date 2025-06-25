@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser-arcade-physics.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>LEVELCODER</title>
+    <style>
+        body {
+            margin-top: 13px;
+            background-color: black;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+        
+        /* Pré-carrega a fonte para garantir disponibilidade */
+        @font-face {
+            font-family: 'VT323';
+            src: url('https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isfFJU.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        /* Elemento invisível para forçar carregamento da fonte */
+        .font-preloader {
+            font-family: 'VT323';
+            position: absolute;
+            left: -100px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Elemento oculto para forçar o carregamento da fonte -->
+    <div class="font-preloader">.</div>
+    
+    <!-- Script para garantir que a fonte esteja carregada antes de iniciar o jogo -->
+    <script>
+        // Função para verificar se a fonte está carregada
+        function isFontLoaded(fontName) {
+            return new Promise((resolve) => {
+                if (document.fonts && document.fonts.check) {
+                    // Método moderno para verificar fontes
+                    if (document.fonts.check(`12px ${fontName}`)) {
+                        return resolve(true);
+                    }
+                    
+                    document.fonts.ready.then(() => {
+                        resolve(document.fonts.check(`12px ${fontName}`));
+                    });
+                } else {
+                    // Fallback para navegadores mais antigos
+                    resolve(true);
+                }
+            });
+        }
+        
+        // Aguarda o carregamento completo da página
+        window.addEventListener('load', function() {
+            // Verifica se a fonte VT323 está carregada
+            isFontLoaded('VT323').then((loaded) => {
+                if (!loaded) {
+                    console.warn('Fonte VT323 pode não estar totalmente carregada');
+                }
+                
+                // Carrega o script principal após verificação da fonte
+                const script = document.createElement('script');
+                script.type = 'module';
+                script.src = 'main.js';
+                document.body.appendChild(script);
+            });
+        });
+    </script>
+</body>
+</html>
