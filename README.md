@@ -14,17 +14,15 @@ Despertar o interesse em programação por meio de um game baseado em comandos s
 - **Phaser.js** (v3) — framework para jogos 2D
 - **HTML5** / **CSS3**
 - **Visual Studio Code**
-- **Parcel** ou **Vite** (caso esteja usando algum bundler)
+- **Vercel**
 
 ## 🚀 O jogo é acessível pela URL: levelcoder.vercel.app 🚀
 
 ## 🎮 Como Jogar
 Use as setas direcionais para se mover.
 
-Pressione E para interagir com NPCs ou objetos como portas.
+Pressione E para interagir com NPCs.
 
-Na HUD à direita, selecione ações de movimentação.
+Na HUD à direita, é apresentado abas com seus funcionamentos.
 
-Pressione o botão de play para executar os comandos em sequência.
-
-Tente sair do laboratório após completar os desafios!
+Quer começar? Tente sair do laboratório após completar os desafios!
